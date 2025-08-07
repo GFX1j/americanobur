@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="American Burguer - Os melhores hambúrgueres de Buenos Aires - PE. Peça já pelo WhatsApp!">
+    <meta name="keywords" content="hambúrguer, delivery, Buenos Aires, American Burguer">
+    <title>Americano</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/icons/favicon.ico">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d10508">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="American Burguer Logo" class="logo-img">
+                    <span class="logo-text">American Burguer</span>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cardapio" class="nav-link">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sobre" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contato" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+                
+                <!-- Cart and Mobile Menu -->
+                <div class="nav-actions">
+                    <button class="cart-btn" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://w.app/americanburguer" target="_blank" class="whatsapp-float" id="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Os Melhores<br><span class="text-red">Hambúrgueres</span><br>da Região</h1>
+                    <p class="hero-subtitle">Sabor autêntico, ingredientes frescos e entrega rápida em Buenos Aires - PE</p>
+                    <div class="hero-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Funcionamento: 18:00 às 23:59</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-hamburger"></i>
+                        <span>Blends artesanais e molhos especiais da casa</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-motorcycle"></i>
+                        <span>Seu pedido quentinho em até 30 minutos</span>
+                        </div>
+                    </div>
+                    <button class="cta-btn" onclick="scrollToSection('cardapio')">
+                        <i class="fas fa-utensils"></i>
+                        Ver Cardápio
+                    </button>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="menu-section" id="cardapio">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nosso Cardápio</h2>
+                    <p class="section-subtitle">Escolha entre nossas deliciosas opções</p>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">Todos</button>
+                        <button class="filter-btn" data-category="burguers">Burguers</button>
+                        <button class="filter-btn" data-category="hotdogs">Hot Dogs</button>
+                        <button class="filter-btn" data-category="wraps">Crep Wraps</button>
+                        <button class="filter-btn" data-category="petiscos">Petiscos</button>
+                        <button class="filter-btn" data-category="coxinhas">Coxinhas</button>
+                        <button class="filter-btn" data-category="refrigerantes">Refrigerantes</button>
+                        <button class="filter-btn" data-category="sucos">Sucos</button>
+                        <button class="filter-btn" data-category="cervejas">Cervejas</button>
+                        <button class="filter-btn" data-category="energeticos">Energéticos</button>
+                        <button class="filter-btn" data-category="drinks">Drinks</button>
+                        <button class="filter-btn" data-category="milkshakes">Milkshakes</button>
+                    </div>
+                    
+                    <div class="search-filter">
+                        <input type="text" id="search-input" placeholder="Buscar produto...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="price-filter">
+                        <select id="price-filter">
+                            <option value="all">Filtrar por Preço</option>
+                            <option value="0-15">Até R$ 15,00</option>
+                            <option value="15-25">R$ 15,01 - R$ 25,00</option>
+                            <option value="25-35">R$ 25,01 - R$ 35,00</option>
+                            <option value="35+">Acima de R$ 35,00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="sobre">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Sobre a American Burguer</h2>
+                        <p>Há mais de 5 anos servindo os melhores hambúrgueres de Buenos Aires - PE. Nossa paixão é criar experiências gastronômicas únicas, utilizando apenas ingredientes frescos e de qualidade.</p>
+                        <p>Cada hambúrguer é preparado com carinho e dedicação, seguindo receitas exclusivas que conquistaram o paladar de milhares de clientes satisfeitos.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">5000+</span>
+                                <span class="stat-label">Clientes Satisfeitos</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Produtos no Cardápio</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Anos de Experiência</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/about-us.jpg" alt="Sobre a American Burguer">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Melhor hambúrguer que já comi! Ingredientes frescos e sabor incrível. Recomendo!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Maria Silva</strong>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Entrega rápida e hambúrguer chegou quentinho. Atendimento nota 10!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>João Santos</strong>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Variedade incrível no cardápio. Sempre encontro algo novo para experimentar!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Ana Costa</strong>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contato">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Entre em Contato</h2>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Endereço</strong>
+                                <p>Buenos Aires - PE</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telefone</strong>
+                                <p>+55 81 97343-7435</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário</strong>
+                                <p>18:00 às 23:59</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://w.app/americanburguer" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.123456789!2d-34.123456!3d-8.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBuenos%20Aires%20-%20PE!5e0!3m2!1spt-BR!2sbr!4v1234567890123" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="American Burguer Logo">
+                        <span>American Burguer</span>
+                    </div>
+                    <p>Os melhores hambúrgueres de Buenos Aires - PE</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#cardapio">Cardápio</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> +55 81 7343-7435</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Buenos Aires - PE</p>
+                    <p><i class="fas fa-clock"></i> 18:00 às 23:59</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="https://w.app/americanburguer" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 American Burguer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Seu Pedido</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content" id="cart-content">
+            <div class="empty-cart" id="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Seu carrinho está vazio</p>
+                <small>Adicione produtos do cardápio</small>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer">
+            <div class="cart-summary">
+                <div class="summary-line">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Taxa de entrega:</span>
+                    <span>R$ 3,00</span>
+                </div>
+                <div class="summary-line total">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 3,00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">
+                <i class="fas fa-check"></i>
+                Finalizar Pedido
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-product-name">Nome do Produto</h3>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-image">
+                    <img id="modal-product-image" src="" alt="">
+                </div>
+                <div class="product-details">
+                    <p id="modal-product-description">Descrição do produto</p>
+                    <div class="product-price">
+                        <span>Preço base: </span>
+                        <span id="modal-product-price">R$ 0,00</span>
+                    </div>
+                    
+                    <!-- Adicionais -->
+                    <div class="extras-section">
+                        <h4>Adicionais</h4>
+                        <div class="extras-list">
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="bacon" data-price="2.00">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Bacon</span>
+                                <span class="extra-price">+ R$ 2,00</span>
+                            </label>
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="blend-frango" data-price="5.90">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Blend Frango</span>
+                                <span class="extra-price">+ R$ 5,90</span>
+                            </label>
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="blend-bovino" data-price="7.90">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Blend Bovino</span>
+                                <span class="extra-price">+ R$ 7,90</span>
+                            </label>
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="cheddar" data-price="3.90">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Cheddar</span>
+                                <span class="extra-price">+ R$ 3,90</span>
+                            </label>
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="mussarela" data-price="3.00">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Mussarela</span>
+                                <span class="extra-price">+ R$ 3,00</span>
+                            </label>
+                            <label class="extra-item">
+                                <input type="checkbox" data-extra="ovo" data-price="2.00">
+                                <span class="checkmark"></span>
+                                <span class="extra-name">Ovo</span>
+                                <span class="extra-price">+ R$ 2,00</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Observações -->
+                    <div class="observations-section">
+                        <label for="product-observations">Observações do item:</label>
+                        <textarea id="product-observations" placeholder="Ex: Sem cebola, ponto da carne, etc..."></textarea>
+                    </div>
+                    
+                    <!-- Quantidade -->
+                    <div class="quantity-section">
+                        <label>Quantidade:</label>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" id="qty-minus">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity" id="product-quantity">1</span>
+                            <button class="qty-btn" id="qty-plus">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Preço Total -->
+                    <div class="total-price">
+                        <span>Total do item: </span>
+                        <span id="modal-total-price">R$ 0,00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="add-to-cart-btn" id="add-to-cart-btn">
+                    <i class="fas fa-cart-plus"></i>
+                    Adicionar ao Carrinho
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content checkout-modal-content">
+            <div class="modal-header">
+                <h3>Finalizar Pedido</h3>
+                <button class="close-modal" id="close-checkout-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="customer-name">Nome completo *</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-phone">Telefone *</label>
+                        <input type="tel" id="customer-phone" placeholder="(00) 00000-0000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-address">Rua e número *</label>
+                        <input type="text" id="customer-address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-complement">Complemento</label>
+                        <input type="text" id="customer-complement" placeholder="Apto, bloco, etc...">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-neighborhood">Bairro *</label>
+                            <input type="text" id="customer-neighborhood" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-cep">CEP *</label>
+                            <input type="text" id="customer-cep" placeholder="00000-000" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-city">Cidade/Estado *</label>
+                        <input type="text" id="customer-city" value="Buenos Aires - PE" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-reference">Ponto de referência</label>
+                        <input type="text" id="customer-reference" placeholder="Ex: Próximo ao mercado...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Forma de pagamento *</label>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="dinheiro" required>
+                                <span class="radio-checkmark"></span>
+                                <span>Dinheiro</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="pix" required>
+                                <span class="radio-checkmark"></span>
+                                <span>PIX</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cartao" required>
+                                <span class="radio-checkmark"></span>
+                                <span>Cartão na Entrega</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="change-group" style="display: none;">
+                        <label for="change-amount">Troco para quanto?</label>
+                        <input type="text" id="change-amount" placeholder="R$ 0,00">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="order-summary">
+                    <div class="summary-line">
+                        <span>Subtotal:</span>
+                        <span id="final-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Taxa de entrega:</span>
+                        <span>R$ 3,00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span>Total:</span>
+                        <span id="final-total">R$ 3,00</span>
+                    </div>
+                </div>
+                <div class="checkout-actions">
+                    <button type="button" class="copy-btn" id="copy-order-btn">
+                        <i class="fas fa-copy"></i>
+                        Copiar Mensagem
+                    </button>
+                    <button type="button" class="whatsapp-btn" id="send-whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Enviar WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- JavaScript Files -->
+    <script src="js/animated-background.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/whatsapp.js"></script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
